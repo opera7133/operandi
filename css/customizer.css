@@ -1,0 +1,28 @@
+/* customize */
+#customize-control-or_list_design_view .customize-inside-control-row {
+  margin: 0;
+}
+
+#customize-control-or_list_design_view input[type='radio'] {
+  display: none;
+}
+
+#customize-control-or_list_design_view input[type='radio'] + label {
+  display: block;
+}
+#customize-control-or_list_design_view input[type='radio'] + label img {
+  border: 3px solid transparent;
+  -webkit-transition: border 0.3s;
+  transition: border 0.3s;
+}
+
+#customize-control-or_list_design_view input[type='radio']:checked + label img {
+  border-color: #2980b9;
+}
+#customize-controls .customize-control-sidebar_block_editor h3 {
+  font-size: 1.125rem;
+}
+.customize-control-title {
+  padding-top: 1rem;
+  border-top: 1px solid #d1d5db;
+}

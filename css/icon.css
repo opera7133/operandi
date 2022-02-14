@@ -1,0 +1,85 @@
+@font-face {
+  font-family: 'operandi-icon';
+  src: url('../fonts/operandi-icon.ttf?jzgjm0') format('truetype'),
+    url('../fonts/operandi-icon.woff?jzgjm0') format('woff'),
+    url('../fonts/operandi-icon.svg?jzgjm0#operandi-icon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+i {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'operandi-icon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ori-discord:before {
+  content: '\e905';
+}
+.ori-hatena:before {
+  content: '\e903';
+}
+.ori-line:before {
+  content: '\e904';
+}
+.ori-telegram:before {
+  content: '\e906';
+}
+.ori-globe:before {
+  content: '\e907';
+}
+.ori-twitter:before {
+  content: '\f099';
+}
+.ori-facebook:before {
+  content: '\f09a';
+}
+.ori-github:before {
+  content: '\f09b';
+}
+.ori-rss:before {
+  content: '\f09e';
+}
+.ori-url:before {
+  content: '\f0c1';
+}
+.ori-pinterest:before {
+  content: '\f0d2';
+}
+.ori-linkedin:before {
+  content: '\f0e1';
+}
+.ori-youtube:before {
+  content: '\f16a';
+}
+.ori-tumblr:before {
+  content: '\f173';
+}
+.ori-soundcloud:before {
+  content: '\f1be';
+}
+.ori-pocket:before {
+  content: '\f265';
+}
+.ori-amazon:before {
+  content: '\f270';
+}
+.ori-time:before {
+  content: '\e900';
+}
+.ori-category:before {
+  content: '\e901';
+}
+.ori-date:before {
+  content: '\e902';
+}
