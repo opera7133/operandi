@@ -9,23 +9,25 @@
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style.css" />
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/icon.css" />
     <?php if (is_front_page() || is_home()): ?>
-    <title><?php bloginfo('name'); ?></title>
+    <title><?php bloginfo("name"); ?></title>
     <?php elseif (is_singular()): ?>
-    <title><?php the_title(); ?> | <?php bloginfo('name'); ?></title>
+    <title><?php the_title(); ?> | <?php bloginfo("name"); ?></title>
     <?php elseif (is_category() || is_tag()): ?>
-    <title><?php single_cat_title(); ?> | <?php bloginfo('name'); ?></title>
+    <title><?php single_cat_title(); ?> | <?php bloginfo("name"); ?></title>
     <?php else: ?>
-    <title><?php the_title(); ?> | <?php bloginfo('name'); ?></title>
+    <title><?php the_title(); ?> | <?php bloginfo("name"); ?></title>
     <?php endif; ?>  
-    <?php if (get_theme_mod('or_main_design_googlefonts')): ?>
+    <?php
+    if (get_theme_mod("or_main_design_googlefonts")): ?>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=<?php
-    $values = get_theme_mod('or_main_design_googlefonts');
-    echo str_replace(',', ':wght@400;700&', $values . ',');
+    $values = get_theme_mod("or_main_design_googlefonts");
+    echo str_replace(",", ":wght@400;700&", $values . ",");
     ?>display=swap" rel="stylesheet">
-    <?php endif; ?>
-    <?php wp_head(); ?>
+    <?php endif;
+    wp_head();
+    ?>
 </head>
 
 <body>
@@ -38,14 +40,14 @@
                 echo '<a href="' .
                     home_url() .
                     '" rel="home">' .
-                    get_bloginfo('name') .
-                    '</a>';
+                    get_bloginfo("name") .
+                    "</a>";
             }
             ?> 
         </h2>
         <?php
         $args = [
-            'container' => false,
+            "container" => false,
         ];
         wp_nav_menu($args);
         ?>

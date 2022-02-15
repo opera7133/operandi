@@ -4,7 +4,7 @@ function or_customize($wp_customize)
     include "control.php";
     $wp_customize->add_panel("or_design", [
         "title" => "デザイン",
-        "priority" => 300,
+        "priority" => 700,
     ]);
 
     // 全体
@@ -195,6 +195,15 @@ function or_customize($wp_customize)
         ])
     );
 
+    $wp_customize->add_setting("or_single_design_toc");
+    $wp_customize->add_control(
+        new WP_Customize_Control($wp_customize, "or_single_design_toc", [
+            "label" => "目次を表示しない",
+            "section" => "or_single_design",
+            "type" => "checkbox",
+        ])
+    );
+
     $wp_customize->add_section("or_mobile_design", [
         "title" => "モバイル",
         "panel" => "or_design",
@@ -280,7 +289,7 @@ function or_customize($wp_customize)
     // SNS
     $wp_customize->add_section("or_sns", [
         "title" => "SNS",
-        "priority" => 400,
+        "priority" => 750,
     ]);
 
     $wp_customize->add_setting("or_sns_services");
@@ -324,14 +333,23 @@ function or_customize($wp_customize)
     // 広告
     $wp_customize->add_section("or_ads", [
         "title" => "広告",
-        "priority" => 500,
+        "priority" => 800,
     ]);
+
+    $wp_customize->add_setting("or_ads_id");
+    $wp_customize->add_control(
+        new WP_Customize_Control($wp_customize, "or_ads_id", [
+            "label" => "サイト運営者ID",
+            "description" => "例：ca-pub-0000000000000000",
+            "section" => "or_ads",
+        ])
+    );
 
     $wp_customize->add_setting("or_ads_display");
     $wp_customize->add_control(
         new WP_Customize_Control($wp_customize, "or_ads_display", [
             "label" => "ディスプレイ広告",
-            "description" => "実装予定",
+            "description" => "例：&lt;ins&gt;...&lt;/ins&gt;",
             "section" => "or_ads",
             "type" => "textarea",
         ])
@@ -345,10 +363,12 @@ function or_customize($wp_customize)
             [
                 "section" => "or_ads",
                 "label" => "配置箇所",
-                "description" => "広告の配置場所を選択（実装予定）",
+                "description" => "ディスプレイ広告の配置場所を選択",
                 "choices" => [
-                    "article_top" => "記事本文上",
-                    "article_bottom" => "記事本文下",
+                    "single_top" => "記事本文上",
+                    "single_bottom" => "記事本文下",
+                    "page_top" => "固定ページ本文上",
+                    "page_bottom" => "固定ページ本文下",
                 ],
             ]
         )
@@ -358,17 +378,29 @@ function or_customize($wp_customize)
     $wp_customize->add_control(
         new WP_Customize_Control($wp_customize, "or_ads_infeed", [
             "label" => "インフィード広告",
-            "description" => "実装予定",
+            "description" => "例：&lt;ins&gt;...&lt;/ins&gt;",
             "section" => "or_ads",
             "type" => "textarea",
         ])
     );
 
-    $wp_customize->add_setting("or_ads_infeed_counts");
+    $wp_customize->add_setting("or_ads_infeed_counts", [
+        "default" => 3,
+    ]);
     $wp_customize->add_control(
         new WP_Customize_Control($wp_customize, "or_ads_infeed_counts", [
             "label" => "表示間隔",
-            "description" => "実装予定",
+            "section" => "or_ads",
+            "type" => "number",
+        ])
+    );
+    $wp_customize->add_setting("or_ads_infeed_max", [
+        "default" => 3,
+    ]);
+    $wp_customize->add_control(
+        new WP_Customize_Control($wp_customize, "or_ads_infeed_max", [
+            "label" => "最大表示数",
+            "description" => "1ページの最大表示数",
             "section" => "or_ads",
             "type" => "number",
         ])
@@ -401,6 +433,9 @@ header {
   color: <?php echo get_theme_mod("or_header_design_color"); ?>;
   <?php endif; ?>
 }
+header nav .mobile span {
+  background: <?php echo get_theme_mod("or_header_design_bgcolor"); ?>;
+}
 footer.footer {
     <?php if (get_theme_mod("or_footer_design_bgcolor")): ?>
   background-color: <?php echo get_theme_mod("or_footer_design_bgcolor"); ?>;
@@ -431,6 +466,11 @@ footer.footer {
 .content.article.single {
   grid-column: span 3 / span 3;
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+<?php endif; ?>
+<?php if (get_theme_mod("or_single_design_toc")): ?>
+.content.article .toc {
+  display: none;
 }
 <?php endif; ?>
 <?php if (get_theme_mod("or_mobile_design_sidebar")): ?>

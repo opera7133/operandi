@@ -25,7 +25,8 @@
                 }
                 ?>
                 </div>
-                <?php if (
+                <?php
+                if (
                     strpos(
                         get_theme_mod("or_sns_display_place"),
                         "article_top"
@@ -88,9 +89,35 @@
                     <?php endif;
                     ?>
                 </div>
-                <?php endif; ?>
+                <?php endif;
+                if (
+                    strpos(
+                        get_theme_mod("or_ads_display_place"),
+                        "single_top"
+                    ) !== false
+                ):
+                    echo get_theme_mod("or_ads_display"); ?>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                <?php
+                endif;
+                ?>
                 <section><?php the_content(); ?></section>
-                <?php if (
+                <?php
+                if (
+                    strpos(
+                        get_theme_mod("or_ads_display_place"),
+                        "single_bottom"
+                    ) !== false
+                ):
+                    echo get_theme_mod("or_ads_display"); ?>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                <?php
+                endif;
+                if (
                     strpos(
                         get_theme_mod("or_sns_display_place"),
                         "article_bottom"
@@ -121,7 +148,8 @@
                             <i class="ori-url text-lg mr-2"></i>
                     </a>
                 </div>
-                <?php endif; ?>
+                <?php endif;
+                ?>
             </article>
             <?php if (!get_theme_mod("or_single_design_related")):
 
@@ -141,6 +169,7 @@
                 ];
                 $related_query = new WP_Query($args);
                 ?>
+                <?php if ($related_query->have_posts()): ?>
             <div class="related">
                 <h3>関連記事</h3>
                 <ul class="related_post_container">
@@ -175,7 +204,7 @@
                     <?php wp_reset_postdata(); ?>
                 </ul>
             </div>
-            <?php
+            <?php endif;
             endif; ?>
             <div class="comments">
             <?php comments_template(); ?>

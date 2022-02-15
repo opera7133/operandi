@@ -11,6 +11,7 @@ function or_setup()
 add_action("after_setup_theme", "or_setup");
 
 include "inc/customizer.php";
+include "inc/toc.php";
 
 // SVG対応
 function custom_mime_types($mimes)
