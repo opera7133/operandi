@@ -15,7 +15,7 @@
                 </time>
                 <div class="post-categories">
                 <?php
-                $categories = get_categories();
+                $categories = get_the_category();
                 foreach ($categories as $category) {
                     echo '<li><a href="' .
                         get_category_link($category->term_id) .
@@ -157,16 +157,9 @@
                             endif; ?>
                             <div>
                                 <h4><?php the_title(); ?></h4>
-                                <time><i class="ori-time"></i>
-                                <?php if (
-                                    get_theme_mod("or_main_design_datetime")
-                                ):
-                                    the_time(
-                                        get_theme_mod("or_main_design_datetime")
-                                    );
-                                else:
-                                    the_time("Y年n月j日");
-                                endif; ?></time>
+                                <time><i class="ori-time"></i><?php the_time(
+                                    get_option("date_format")
+                                ); ?></time>
                                 <p><?php if (
                                     get_theme_mod(
                                         "or_main_design_excerpt_num"

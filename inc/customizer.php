@@ -50,15 +50,6 @@ function or_customize($wp_customize)
         )
     );
 
-    $wp_customize->add_setting("or_main_design_datetime");
-    $wp_customize->add_control(
-        new WP_Customize_Control($wp_customize, "or_main_design_datetime", [
-            "label" => "日付フォーマット",
-            "description" => "日付のフォーマット<br>例：Y年n月j日",
-            "section" => "or_main_design",
-        ])
-    );
-
     $wp_customize->add_setting("or_main_design_primary", [
         "default" => "#252525",
     ]);
@@ -153,6 +144,15 @@ function or_customize($wp_customize)
     $wp_customize->add_control(
         new WP_Customize_Control($wp_customize, "or_list_design_sidebar", [
             "label" => "サイドバーを表示しない",
+            "section" => "or_list_design",
+            "type" => "checkbox",
+        ])
+    );
+
+    $wp_customize->add_setting("or_list_design_category");
+    $wp_customize->add_control(
+        new WP_Customize_Control($wp_customize, "or_list_design_category", [
+            "label" => "カテゴリーを表示しない",
             "section" => "or_list_design",
             "type" => "checkbox",
         ])

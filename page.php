@@ -5,11 +5,7 @@
             <article>
                 <h2 class="title"><?php the_title(); ?></h2>
                 <time class="date"><i class="ori-time"></i>
-                <?php if (get_theme_mod("or_main_design_datetime")):
-                    the_time(get_theme_mod("or_main_design_datetime"));
-                else:
-                    the_time("Y年n月j日");
-                endif; ?>
+                <?php the_time(get_option("date_format")); ?>
                 </time>
                 <section><?php the_content(); ?></section>
             </article>

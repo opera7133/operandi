@@ -6,7 +6,7 @@ Author: wamo
 Author URL: https://wmsci.com
 License: GPL 3.0 License
 License URI: https://www.gnu.org/licenses/gpl-3.0.ja.html
-Version: 1.0.5
+Version: 1.0.6
 */
 
 html,
@@ -242,14 +242,16 @@ main {
 }
 .content.list a .col h3 {
   margin: 0;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   margin-bottom: 0.75rem;
 }
 .content.list a .col time {
   margin: 0;
+  color: rgb(35, 35, 35);
 }
 .content.list a .col p {
   margin-top: 0.5rem;
+  color: rgb(35, 35, 35);
 }
 .content.list a .col img {
   max-width: 100%;
@@ -295,6 +297,7 @@ main {
   flex-direction: row;
   padding: 0;
   margin-bottom: 1rem;
+  flex-wrap: wrap;
 }
 .content.article .post-categories li a {
   display: inline-block;
@@ -418,7 +421,6 @@ main {
   display: flex;
   flex-direction: row;
   gap: 1rem;
-  height: 6rem;
   color: inherit;
 }
 .content.article .related ul li a:hover {
@@ -430,15 +432,19 @@ main {
   aspect-ratio: 16 / 9;
   width: auto;
   object-fit: cover;
+  height: 6rem;
 }
 .content.article .related ul li a h4 {
   margin: 0;
-  line-height: 1.75rem;
+  margin-top: 0.25rem;
+  line-height: 1rem;
 }
 .content.article .related ul li a time,
 .content.article .related ul li a p {
   font-size: 0.875rem;
+  line-height: 1rem;
   margin: 0;
+  color: rgb(35, 35, 35);
 }
 
 /* widget */
@@ -449,6 +455,10 @@ main {
 }
 li.widget {
   list-style: none;
+}
+.widget h2,
+.widget h3 {
+  font-size: 1.125rem;
 }
 .widgettitle {
   font-size: 1.125rem;
@@ -553,6 +563,10 @@ li.widget {
 .comment-form .required-field-message {
   display: block;
 }
+.comment-form span.required {
+  color: red;
+  font-weight: bold;
+}
 .comment-form input[type='text'],
 .comment-form textarea {
   border-radius: 0.5rem;
@@ -564,6 +578,9 @@ li.widget {
 .comment-form input[type='text']:focus,
 .comment-form textarea:focus {
   background-color: rgb(245, 245, 245);
+}
+.comment-form textarea {
+  padding-top: 0.75rem;
 }
 .comment-form input[type='submit'] {
   background-color: var(--primary-color, #252525);
@@ -582,6 +599,16 @@ li.widget {
   list-style: none;
   padding: 0;
   gap: 2rem;
+}
+.commentlist ul,
+.commentlist ol {
+  list-style: none;
+}
+.commentlist .children {
+  margin-top: 1rem;
+}
+.commentlist cite {
+  font-style: normal;
 }
 .commentlist a {
   color: black;

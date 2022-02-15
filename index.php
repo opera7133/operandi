@@ -14,27 +14,21 @@
                     <div class="details">	
                         <h3><?php the_title(); ?></h3>
                         <time><i class="ori-time"></i>
-                            <?php if (get_theme_mod("or_main_design_datetime")):
-                                the_time(
-                                    get_theme_mod("or_main_design_datetime")
-                                );
-                            else:
-                                the_time("Y年n月j日");
-                            endif; ?></time>
+                        <?php the_time(get_option("date_format")); ?></time>
                         <p><?php if (
                             get_theme_mod("or_main_design_excerpt_num") !== "0"
                         ):
                             echo get_the_excerpt();
                         endif; ?></p>
                         <div class="category">
-                        <?php
-                        $category = get_the_category();
-                        if ($category[0]->name !== ""):
-                            echo '<div><i class="ori-category"></i>' .
-                                $category[0]->name .
-                                "</div>";
-                        endif;
-                        ?>
+                        <?php if (!get_theme_mod("or_list_design_category")):
+                            $category = get_the_category();
+                            if (!is_null($category[0]->name)):
+                                echo '<div><i class="ori-category"></i>' .
+                                    $category[0]->name .
+                                    "</div>";
+                            endif;
+                        endif; ?>
                         </div>
                     </div>
                 </div>
