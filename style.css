@@ -4,9 +4,9 @@ Theme URL: https://github.com/opera7133/operandi
 Description: More less, more simple.
 Author: wamo
 Author URL: https://wmsci.com
-License: Apache-2.0 License
+License: GPL 3.0 License
 License URI: https://www.apache.org/licenses/LICENSE-2.0
-Version: 1.0.4
+Version: 1.0.5
 */
 
 html,
@@ -249,8 +249,7 @@ main {
   margin: 0;
 }
 .content.list a .col p {
-  font-size: 1.125rem;
-  margin: 0;
+  margin-top: 0.5rem;
 }
 .content.list a .col img {
   max-width: 100%;
@@ -408,6 +407,39 @@ main {
 .content.article .sns a.url {
   background-color: #252525;
 }
+.content.article .related ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.content.article .related ul li a {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  height: 6rem;
+  color: inherit;
+}
+.content.article .related ul li a:hover {
+  opacity: inherit;
+  transform: translateY(-0.25rem);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+.content.article .related ul li a img {
+  aspect-ratio: 16 / 9;
+  width: auto;
+  object-fit: cover;
+}
+.content.article .related ul li a h4 {
+  margin: 0;
+  line-height: 1.75rem;
+}
+.content.article .related ul li a time,
+.content.article .related ul li a p {
+  font-size: 0.875rem;
+  margin: 0;
+}
 
 /* widget */
 .sidebar {
@@ -492,6 +524,7 @@ li.widget {
   margin-top: 2rem;
   grid-column: span 2 / span 2;
   text-align: center;
+  margin-bottom: 3rem;
 }
 .pagination .page-numbers {
   width: 46px;
@@ -501,13 +534,6 @@ li.widget {
   line-height: 46px;
   text-align: center;
   background-color: white;
-  margin-bottom: 3rem;
-}
-.pagination .page-numbers.next,
-.pagination .page-numbers.prev {
-  padding-left: 1rem;
-  padding-right: 1rem;
-  width: auto;
 }
 .pagination .page-numbers.current {
   background-color: var(--primary-color, #252525);
@@ -516,7 +542,8 @@ li.widget {
 
 /* comment */
 .comments,
-.comment-respond {
+.comment-respond,
+.related {
   margin-top: 4rem;
 }
 .comment-form p:not(.comment-form-cookies-consent):not(.logged-in-as) {

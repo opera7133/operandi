@@ -14,20 +14,25 @@
                     <div class="details">	
                         <h3><?php the_title(); ?></h3>
                         <time><i class="ori-time"></i>
-                            <?php if (get_theme_mod('or_main_design_datetime')):
+                            <?php if (get_theme_mod("or_main_design_datetime")):
                                 the_time(
-                                    get_theme_mod('or_main_design_datetime')
+                                    get_theme_mod("or_main_design_datetime")
                                 );
                             else:
-                                the_time('Y年n月j日');
+                                the_time("Y年n月j日");
                             endif; ?></time>
+                        <p><?php if (
+                            get_theme_mod("or_main_design_excerpt_num") !== "0"
+                        ):
+                            echo get_the_excerpt();
+                        endif; ?></p>
                         <div class="category">
                         <?php
                         $category = get_the_category();
-                        if ($category[0]->name !== ''):
+                        if ($category[0]->name !== ""):
                             echo '<div><i class="ori-category"></i>' .
                                 $category[0]->name .
-                                '</div>';
+                                "</div>";
                         endif;
                         ?>
                         </div>
@@ -39,15 +44,17 @@
         endif; ?>
         <?php
         $args = [
-            'mid_size' => 1,
-            'prev_text' => '&lt;&lt; 前へ',
-            'next_text' => '次へ &gt;&gt;',
-            'screen_reader_text' => ' ',
+            "mid_size" => 1,
+            "prev_text" => "&lt;",
+            "next_text" => "&gt;",
+            "screen_reader_text" => " ",
         ];
         the_posts_pagination($args);
         ?>
         </div>
-        <?php get_sidebar(); ?>
+        <?php if (!get_theme_mod("or_list_design_sidebar")):
+            get_sidebar();
+        endif; ?>
     </main>
     <?php get_footer(); ?>
     <?php wp_footer(); ?>

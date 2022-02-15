@@ -1,16 +1,16 @@
 <?php get_header(); ?>
     <main>
-        <div class="content article">
+        <div class="content article single">
             <?php if (has_post_thumbnail()): ?>
                 <?php the_post_thumbnail(); ?>
             <?php endif; ?>
             <article>
                 <h2 class="title"><?php the_title(); ?></h2>
                 <time class="date"><i class="ori-time"></i>
-                <?php if (get_theme_mod('or_main_design_datetime')):
-                    the_time(get_theme_mod('or_main_design_datetime'));
+                <?php if (get_theme_mod("or_main_design_datetime")):
+                    the_time(get_theme_mod("or_main_design_datetime"));
                 else:
-                    the_time('Y年n月j日');
+                    the_time("Y年n月j日");
                 endif; ?>
                 </time>
                 <div class="post-categories">
@@ -21,20 +21,20 @@
                         get_category_link($category->term_id) .
                         '"><i class="ori-category"></i>' .
                         $category->name .
-                        '</a></li>';
+                        "</a></li>";
                 }
                 ?>
                 </div>
                 <?php if (
                     strpos(
-                        get_theme_mod('or_sns_display_place'),
-                        'article_top'
+                        get_theme_mod("or_sns_display_place"),
+                        "article_top"
                     ) !== false
                 ): ?>
                 <div class="sns">
                     <?php
                     if (
-                        strpos(get_theme_mod('or_sns_services'), 'twitter') !==
+                        strpos(get_theme_mod("or_sns_services"), "twitter") !==
                         false
                     ): ?>
                     <a href="https://twitter.com/intent/tweet?url=<?php the_permalink(); ?>&text=<?php the_title(); ?>" target="_blank" rel="noopener noreferrer"
@@ -43,7 +43,7 @@
                     </a>
                     <?php endif;
                     if (
-                        strpos(get_theme_mod('or_sns_services'), 'facebook') !==
+                        strpos(get_theme_mod("or_sns_services"), "facebook") !==
                         false
                     ): ?>
                     <a href="https://www.facebook.com/sharer/sharer.php?u=<?php the_permalink(); ?>&t=<?php the_title(); ?>" target="_blank" rel="noopener noreferrer"
@@ -52,7 +52,7 @@
                     </a>
                     <?php endif;
                     if (
-                        strpos(get_theme_mod('or_sns_services'), 'hatena') !==
+                        strpos(get_theme_mod("or_sns_services"), "hatena") !==
                         false
                     ): ?>
                     <a href="https://b.hatena.ne.jp/add?mode=confirm&url=<?php the_permalink(); ?>&title=<?php the_title(); ?>" target="_blank" rel="noopener noreferrer"
@@ -61,7 +61,7 @@
                     </a>
                     <?php endif;
                     if (
-                        strpos(get_theme_mod('or_sns_services'), 'pocket') !==
+                        strpos(get_theme_mod("or_sns_services"), "pocket") !==
                         false
                     ): ?>
                     <a href="https://getpocket.com/edit?url=<?php the_permalink(); ?>&title=<?php the_title(); ?>" target="_blank" title="pocket" rel="noopener noreferrer"
@@ -70,7 +70,7 @@
                     </a>
                     <?php endif;
                     if (
-                        strpos(get_theme_mod('or_sns_services'), 'line') !==
+                        strpos(get_theme_mod("or_sns_services"), "line") !==
                         false
                     ): ?>
                     <a href="https://timeline.line.me/social-plugin/share?url=<?php the_permalink(); ?>" class="line" target="_blank" title="line" rel="noopener noreferrer">
@@ -78,7 +78,7 @@
                     </a>
                     <?php endif;
                     if (
-                        strpos(get_theme_mod('or_sns_services'), 'url') !==
+                        strpos(get_theme_mod("or_sns_services"), "url") !==
                         false
                     ): ?>
                     <a href="javascript:OnClickURL();" class="url" title="Copy to Clipboard"
@@ -92,8 +92,8 @@
                 <section><?php the_content(); ?></section>
                 <?php if (
                     strpos(
-                        get_theme_mod('or_sns_display_place'),
-                        'article_bottom'
+                        get_theme_mod("or_sns_display_place"),
+                        "article_bottom"
                     ) !== false
                 ): ?>
                 <div class="sns">
@@ -123,11 +123,74 @@
                 </div>
                 <?php endif; ?>
             </article>
+            <?php if (!get_theme_mod("or_single_design_related")):
+
+                if (has_category()) {
+                    $catlist = get_the_category();
+                    $category = [];
+                    foreach ($catlist as $cat) {
+                        $category[] = $cat->term_id;
+                    }
+                }
+                $args = [
+                    "post_type" => "post",
+                    "posts_per_page" => "5",
+                    "post__not_in" => [$post->ID],
+                    "category__in" => $category,
+                    "orderby" => "rand",
+                ];
+                $related_query = new WP_Query($args);
+                ?>
+            <div class="related">
+                <h3>関連記事</h3>
+                <ul class="related_post_container">
+                    <?php while ($related_query->have_posts()):
+                        $related_query->the_post(); ?>
+                    <li>
+                        <a href="<?php the_permalink(); ?>">
+                            <?php if (has_post_thumbnail()):
+                                the_post_thumbnail("medium");
+                            else:
+                                 ?>
+                            <img src="<?php echo get_template_directory_uri(); ?>/img/default.jpg" />
+                            <?php
+                            endif; ?>
+                            <div>
+                                <h4><?php the_title(); ?></h4>
+                                <time><i class="ori-time"></i>
+                                <?php if (
+                                    get_theme_mod("or_main_design_datetime")
+                                ):
+                                    the_time(
+                                        get_theme_mod("or_main_design_datetime")
+                                    );
+                                else:
+                                    the_time("Y年n月j日");
+                                endif; ?></time>
+                                <p><?php if (
+                                    get_theme_mod(
+                                        "or_main_design_excerpt_num"
+                                    ) !== "0"
+                                ):
+                                    echo get_the_excerpt();
+                                endif; ?></p>
+                            </div>
+                        </a>
+                    </li>
+                    <?php
+                    endwhile; ?>
+                    <?php wp_reset_postdata(); ?>
+                </ul>
+            </div>
+            <?php
+            endif; ?>
             <div class="comments">
             <?php comments_template(); ?>
             </div>
         </div>
-        <?php get_sidebar(); ?>
+        <?php if (!get_theme_mod("or_single_design_sidebar")):
+            get_sidebar();
+        endif; ?>
     </main>
     <?php get_footer(); ?>
     <?php wp_footer(); ?>
