@@ -510,6 +510,7 @@ li.widget {
 }
 .widget input:focus {
   border: none;
+  outline-offset: 1px;
 }
 .widget button.wp-block-search__button,
 .widget.widget_search input[type='submit'] {

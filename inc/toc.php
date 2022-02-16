@@ -11,14 +11,28 @@ function add_index($content)
             $i = 1;
 
             foreach ($elements as $element) {
-                $regex = "/" . preg_quote($element[0], "/") . "/su";
                 preg_match(
-                    '/<(h[1-6] id="(.*)?")>(.+)?<\/(h[1-6])>/s',
+                    '/<(h[1-6]) id="(.*)?">(.+)?<\/(h[1-6])>/s',
                     $element[0],
                     $id
                 );
 
-                $id[2] = empty($id[2]) ? "chapter-" . $i : $id;
+                if (empty($id[2])) {
+                    $id[2] = "chapter-" . $i;
+                    $regex = "/" . preg_quote($element[0], "/") . "/su";
+                    $replace_title = preg_replace(
+                        "/<(h[1-6])>(.+?)<\/(h[1-6])>/s",
+                        '<$1 id="' . $id[2] . '">$2</$3>',
+                        $element[0],
+                        1
+                    );
+                    $content = preg_replace(
+                        $regex,
+                        $replace_title,
+                        $content,
+                        1
+                    );
+                }
 
                 if (strpos($element[0], "<h2") !== false) {
                     $level = 1;
