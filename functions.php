@@ -52,11 +52,11 @@ function prism()
 {
     wp_enqueue_style(
         "prism-style",
-        get_stylesheet_directory_uri() . "/css/prism.css"
+        get_template_directory_uri() . "/css/prism.css"
     );
     wp_enqueue_script(
         "prism-script",
-        get_stylesheet_directory_uri() . "/js/prism.js"
+        get_template_directory_uri() . "/js/prism.js"
     );
 }
 if (get_theme_mod("or_main_design_prismjs")):
@@ -74,3 +74,35 @@ function change_excerpt_more($more)
     return get_theme_mod("or_main_design_excerpt_text") ?: "...";
 }
 add_filter("excerpt_more", "change_excerpt_more");
+
+function or_register_block()
+{
+    $registerBlocks = ["/blocks/linkcard", "/blocks/alert"];
+    function or_register_block_loop($BlockDir)
+    {
+        $blockType = basename($BlockDir);
+
+        wp_register_script(
+            $blockType,
+            get_template_directory_uri() . $BlockDir . "/block.js",
+            ["wp-blocks", "wp-element"],
+            "1.0.0",
+            true
+        );
+
+        wp_enqueue_style(
+            $blockType,
+            get_template_directory_uri() . $BlockDir . "/style.css",
+            [],
+            "1.0.0"
+        );
+
+        include substr($BlockDir, 1, strlen($BlockDir) - 1) . "/index.php";
+    }
+    $blockRegister = "or_register_block_loop";
+    foreach ($registerBlocks as $value) {
+        $blockRegister($value);
+    }
+}
+
+add_action("init", "or_register_block");

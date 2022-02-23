@@ -1,0 +1,14 @@
+div.alert-editor {
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+div.alert-editor p {
+  margin: 0;
+}
+div.alert-editor .dashicons {
+  font-size: 1.75rem;
+  width: auto;
+  height: auto;
+}

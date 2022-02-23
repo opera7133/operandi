@@ -1,7 +1,7 @@
 <?php
 class OR_Customize_Multiple_Checkbox_Control extends WP_Customize_Control
 {
-    public $type = 'multiple-checkbox';
+    public $type = "multiple-checkbox";
 
     protected function render_content()
     {
@@ -22,7 +22,7 @@ class OR_Customize_Multiple_Checkbox_Control extends WP_Customize_Control
     <?php endif; ?>
 
     <?php $multi_values = !is_array($this->value())
-        ? explode(',', $this->value())
+        ? explode(",", $this->value())
         : $this->value(); ?>
 
     <ul>
@@ -41,7 +41,7 @@ class OR_Customize_Multiple_Checkbox_Control extends WP_Customize_Control
       type="hidden"
       name="mulitiple-checkbox-value"
       <?php $this->link(); ?>
-      value="<?php echo esc_attr(implode(',', $multi_values)); ?>"
+      value="<?php echo esc_attr(implode(",", $multi_values)); ?>"
     >
   <?php
     }
@@ -49,19 +49,19 @@ class OR_Customize_Multiple_Checkbox_Control extends WP_Customize_Control
 
 class OR_Customize_Image_Label_Radio_Control extends WP_Customize_Control
 {
-    public $type = 'image-label-radio';
+    public $type = "image-label-radio";
     public function render_content()
     {
-        $input_id = 'customize-input-' . $this->id;
-        $description_id = 'customize-description-' . $this->id;
+        $input_id = "customize-input-" . $this->id;
+        $description_id = "customize-description-" . $this->id;
         $describedby_attr = !empty($this->description)
             ? ' aria-describedby="' . esc_attr($description_id) . '" '
-            : '';
+            : "";
         if (empty($this->choices)) {
             return;
         }
 
-        $name = 'customize-radio-' . $this->id;
+        $name = "customize-radio-" . $this->id;
         ?>
       <?php if (!empty($this->label)): ?>
           <span class="customize-control-title"><?php echo esc_html(
@@ -77,7 +77,7 @@ class OR_Customize_Image_Label_Radio_Control extends WP_Customize_Control
       <?php foreach ($this->choices as $value => $label): ?>
           <span class="customize-inside-control-row">
               <input
-                  id="<?php echo esc_attr($input_id . '-radio-' . $value); ?>"
+                  id="<?php echo esc_attr($input_id . "-radio-" . $value); ?>"
                   type="radio"
                   <?php echo $describedby_attr; ?>
                   value="<?php echo esc_attr($value); ?>"
@@ -86,7 +86,7 @@ class OR_Customize_Image_Label_Radio_Control extends WP_Customize_Control
                   <?php checked($this->value(), $value); ?>
                   />
               <label for="<?php echo esc_attr(
-                  $input_id . '-radio-' . $value
+                  $input_id . "-radio-" . $value
               ); ?>"><img src="<?php echo esc_url_raw($label); ?>" /></label>
           </span>
       <?php endforeach; ?>
@@ -94,19 +94,19 @@ class OR_Customize_Image_Label_Radio_Control extends WP_Customize_Control
     }
 }
 
-function my_sanitize_multiple_checkbox($values)
+function OR_sanitize_multiple_checkbox($values)
 {
-    $multi_values = !is_array($values) ? explode(',', $values) : $values;
+    $multi_values = !is_array($values) ? explode(",", $values) : $values;
     return !empty($multi_values)
-        ? array_map('sanitize_text_field', $multi_values)
+        ? array_map("sanitize_text_field", $multi_values)
         : [];
 }
 
 function customizer_style()
 {
     wp_enqueue_style(
-        'customizer-style',
-        get_template_directory_uri() . '/css/customizer.css'
+        "customizer-style",
+        get_template_directory_uri() . "/css/customizer.css"
     );
 }
-add_action('customize_controls_enqueue_scripts', 'customizer_style');
+add_action("customize_controls_enqueue_scripts", "customizer_style");

@@ -1,0 +1,19 @@
+.linkcard-wrapper {
+  display: block;
+  padding: 1rem;
+  background-color: rgb(243, 243, 243);
+}
+
+.linkcard-wrapper p {
+  margin: 0;
+  margin-bottom: 0.5rem;
+}
+
+.editor-styles-wrapper a.linkcard {
+  display: block;
+  padding: 0.5rem;
+  font-size: 0.875rem;
+  color: inherit;
+  width: 100%;
+  background-color: white;
+}

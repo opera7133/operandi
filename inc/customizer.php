@@ -13,18 +13,21 @@ function or_customize($wp_customize)
         "panel" => "or_design",
     ]);
 
-    $wp_customize->add_setting("or_main_design_font");
+    $wp_customize->add_setting("or_main_design_font", [
+        "default" =>
+            "system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji'",
+    ]);
     $wp_customize->add_control(
         new WP_Customize_Control($wp_customize, "or_main_design_font", [
             "label" => "フォント",
-            "description" =>
-                "使用するフォント<br>例：Poppins, Noto Sans JP, sans-serif",
+            "description" => "使用するフォント<br>例：Poppins, Noto Sans JP",
             "section" => "or_main_design",
         ])
     );
 
     $wp_customize->add_setting("or_main_design_googlefonts", [
-        "default" => false,
+        "default" => ["Poppins", "Noto+Sans+JP"],
+        "sanitize_callback" => "OR_sanitize_multiple_checkbox",
     ]);
     $wp_customize->add_control(
         new OR_Customize_Multiple_Checkbox_Control(
@@ -106,6 +109,16 @@ function or_customize($wp_customize)
         new WP_Customize_Control($wp_customize, "or_main_design_excerpt_text", [
             "label" => "省略記号",
             "section" => "or_main_design",
+        ])
+    );
+
+    $wp_customize->add_setting("or_main_design_rounded");
+    $wp_customize->add_control(
+        new WP_Customize_Control($wp_customize, "or_main_design_rounded", [
+            "label" => "丸っこい感じ",
+            "description" => "サイト全体を丸っこい感じにします",
+            "section" => "or_main_design",
+            "type" => "checkbox",
         ])
     );
 
@@ -292,7 +305,10 @@ function or_customize($wp_customize)
         "priority" => 750,
     ]);
 
-    $wp_customize->add_setting("or_sns_services");
+    $wp_customize->add_setting("or_sns_services", [
+        "default" => ["twitter", "facebook", "hatena", "pocket", "line", "url"],
+        "sanitize_callback" => "OR_sanitize_multiple_checkbox",
+    ]);
     $wp_customize->add_control(
         new OR_Customize_Multiple_Checkbox_Control(
             $wp_customize,
@@ -420,9 +436,55 @@ function theme_customize_css()
     --secondary-color: <?php echo get_theme_mod("or_main_design_secondary"); ?>;
     <?php endif; ?>
 }
+<?php if (get_theme_mod("or_main_design_rounded")): ?>
+.content.list a:not(.page-numbers), .content.list a .col, .content.article .size-post-thumbnail, .content.article .toc {
+    border-radius: 1rem;
+}
+.content.article blockquote {
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+}
+.content.list a .col img {
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+.content.article, .sidebar {
+    border-radius: 2rem;
+}
+.content.article .linkcard, .widget ul li a:not(.recentcomments a) {
+    border-radius: 1rem;
+}
+.content.article .linkcard img {
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+.content.article .related ul li a { 
+    border-radius: 1rem;
+}
+.content.article .related ul li a img {
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
+.content.article .alert {
+    border-radius: 1rem;
+}
+@media(min-width: 760px) {
+    .content.article .linkcard img {
+        border-bottom-left-radius: 1rem;
+        border-top-right-radius: 0;
+    }
+    .content.article .related ul li a img {
+        border-bottom-left-radius: 1rem;
+        border-top-right-radius: 0;
+    }
+}
+
+<?php endif; ?>
 <?php if (get_theme_mod("or_main_design_font")): ?>
 html, body {
-    font-family: <?php echo get_theme_mod("or_main_design_font"); ?>;
+    font-family: <?php echo get_theme_mod(
+        "or_main_design_font"
+    ); ?>, system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji';
 }
 <?php endif; ?>
 header {
@@ -489,6 +551,8 @@ footer.footer {
 }
 <?php endif; ?>
 <?php if (get_theme_mod("or_list_design_view") == "bar"): ?>
+
+@media (min-width: 640px) {
 main {
   gap: 2rem;
 }
@@ -496,13 +560,18 @@ main {
   display: flex;
 }
 .content.list a .col img {
-  width: auto;
-  height: 10rem;
+  width: 30%;
+  height: auto;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  border-top-right-radius: 0;
 }
 .content.list a .col {
   flex-direction: row;
   gap: 16px;
 }
+}
+
 <?php endif; ?>
 </style>
 <?php

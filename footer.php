@@ -41,6 +41,7 @@
                 }
             });
             })(window, document);
+        <?php endif; ?>
         function toggleNav() {
             var a = document.getElementById('hamburgerbtn'),
                 b = document.getElementById('overlay'),
@@ -51,7 +52,6 @@
                 c.classList.toggle('scroll-lock');
             });
         }
-        <?php endif; ?>
         toggleNav();
         new ClipboardJS('.url');
         function OnClickURL() {

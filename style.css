@@ -6,7 +6,7 @@ Author: wamo
 Author URL: https://wmsci.com
 License: GPL-3.0 License
 License URI: https://www.gnu.org/licenses/gpl-3.0.ja.html
-Version: 1.0.7
+Version: 1.0.8
 */
 
 html,
@@ -445,20 +445,34 @@ main {
 }
 .content.article .related ul li a {
   display: flex;
-  flex-direction: row;
-  gap: 1rem;
+  flex-direction: column;
   color: inherit;
-}
-.content.article .related ul li a:hover {
-  opacity: inherit;
-  transform: translateY(-0.25rem);
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  border: 1px solid rgb(230, 230, 230);
 }
 .content.article .related ul li a img {
   aspect-ratio: 16 / 9;
-  width: auto;
+  width: 100%;
   object-fit: cover;
-  height: 7rem;
+  height: auto;
+}
+@media (min-width: 640px) {
+  .content.article .related ul li a {
+    gap: 1rem;
+    flex-direction: row;
+  }
+  .content.article .related ul li a img {
+    aspect-ratio: 16 / 9;
+    width: 25%;
+    object-fit: cover;
+    height: auto;
+  }
+}
+.content.article .related ul li a:hover {
+  opacity: inherit;
+  background-color: rgb(243, 243, 243);
+}
+.content.article .related ul li a div {
+  padding: 0.5rem;
 }
 .content.article .related ul li a h4 {
   margin: 0;
@@ -471,6 +485,63 @@ main {
   line-height: 1rem;
   margin: 0;
   color: rgb(35, 35, 35);
+}
+.content.article .alert {
+  padding: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-direction: column;
+}
+.content.article .alert .dashicons {
+  font-size: 1.75rem;
+  width: auto;
+  height: auto;
+}
+@media (min-width: 640px) {
+  .content.article .alert {
+    flex-direction: row;
+  }
+}
+.content.article .linkcard {
+  color: inherit;
+  display: flex;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid rgb(230, 230, 230);
+  flex-direction: column;
+}
+.content.article .linkcard .details {
+  padding: 1rem;
+  flex-grow: 1;
+}
+.content.article .linkcard .linkcard-title {
+  margin: 0;
+  font-weight: bold;
+  font-size: 1.25rem;
+  line-height: 1.125;
+}
+.content.article .linkcard .linkcard-description {
+  margin: 0;
+  margin-top: 0.25rem;
+  line-height: 1.3;
+}
+.content.article .linkcard img {
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+}
+@media (min-width: 768px) {
+  .content.article .linkcard {
+    display: flex;
+    flex-direction: row;
+  }
+  .content.article .linkcard img {
+    flex: 0 0 25%;
+    width: 25%;
+    max-width: 250px;
+    height: auto;
+  }
 }
 
 /* widget */
