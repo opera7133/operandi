@@ -496,7 +496,7 @@ header {
   <?php endif; ?>
 }
 header nav .mobile span {
-  background: <?php echo get_theme_mod("or_header_design_bgcolor"); ?>;
+  background: <?php echo get_theme_mod("or_header_design_color"); ?>;
 }
 footer.footer {
     <?php if (get_theme_mod("or_footer_design_bgcolor")): ?>
