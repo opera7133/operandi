@@ -165,13 +165,11 @@
                 ); ?></p>
                 <div class="author-sns">
                 <?php
-                // Website
                 if (get_the_author_meta("user_url")) {
                     echo '<a rel="noopener noreferrer" class="sns-icon url" href="' .
                         esc_url(get_the_author_meta("user_url")) .
                         '"><i class="ori-url"></i></a>';
                 }
-                // Facebook
                 if (get_the_author_meta("facebook")) {
                     echo '<a rel="noopener noreferrer" class="sns-icon facebook" href="' .
                         esc_url(
@@ -180,7 +178,6 @@
                         ) .
                         '"><i class="ori-facebook"></i></a>';
                 }
-                // Twitter
                 if (get_the_author_meta("twitter")) {
                     echo '<a rel="noopener noreferrer" class="sns-icon twitter" href="' .
                         esc_url(
@@ -189,17 +186,15 @@
                         ) .
                         '"><i class="ori-twitter"></i></a>';
                 }
-                // Google Plus
                 if (get_the_author_meta("youtube")) {
                     echo '<a rel="noopener noreferrer" class="sns-icon youtube" href="' .
                         esc_url(get_the_author_meta("youtube")) .
                         '"><i class="ori-youtube"></i></a>';
                 }
-                // Skype
                 if (get_the_author_meta("github")) {
                     echo '<a rel="noopener noreferrer" class="sns-icon github" href="' .
                         esc_attr(get_the_author_meta("github")) .
-                        '?call"><i class="ori-github"></i></a>';
+                        '"><i class="ori-github"></i></a>';
                 }
                 ?>
                 </div>

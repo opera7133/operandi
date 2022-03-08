@@ -109,8 +109,6 @@ add_action("init", "or_register_block");
 
 function custom_user_meta($wb)
 {
-    $wb["twitter"] = __("Facebook ユーザー名", "text_domain");
-    $wb["twitter"] = __("Twitter ユーザー名", "text_domain");
     $wb["github"] = __("Github URL", "text_domain");
     $wb["telegram"] = __("Telegram URL", "text_domain");
     $wb["youtube"] = __("Youtube URL", "text_domain");
