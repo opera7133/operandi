@@ -6,7 +6,7 @@ Author: wamo
 Author URL: https://wmsci.com
 License: GPL-3.0 License
 License URI: https://www.gnu.org/licenses/gpl-3.0.ja.html
-Version: 1.0.9
+Version: 1.1.0
 */
 
 html,
@@ -396,6 +396,7 @@ main {
   color: inherit;
 }
 .content.article .toc .toc__title {
+  cursor: pointer;
   margin: 0;
   font-size: 1.25rem;
   font-weight: bold;

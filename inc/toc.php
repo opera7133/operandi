@@ -64,7 +64,7 @@ function add_index($content)
                     '<li class="toc__item"><a href="#' .
                     $id[2] .
                     '" class="toc__link">' .
-                    $element[1] .
+                    strip_tags($element[1]) .
                     "</a>";
                 $i++;
             }
