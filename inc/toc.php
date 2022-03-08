@@ -12,7 +12,7 @@ function add_index($content)
 
             foreach ($elements as $element) {
                 preg_match(
-                    '/<(h[1-6]) id="(.*)?">(.+)?<\/(h[1-6])>/s',
+                    '/<(h[1-6]) id="(.*?)?">(.+)?<\/(h[1-6])>/s',
                     $element[0],
                     $id
                 );
