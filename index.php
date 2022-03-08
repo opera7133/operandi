@@ -23,7 +23,7 @@
             $ads_infeed_count++;
             ?>
             <a href="<?php echo get_permalink(); ?>">
-                <div class="col">
+                <div class="opr_col">
                     <?php if (has_post_thumbnail()): ?>
                         <?php the_post_thumbnail(); ?>
                     <?php else: ?>

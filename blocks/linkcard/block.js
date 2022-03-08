@@ -58,7 +58,7 @@
             el("p", null, "URLを入力"),
             el(RichText, {
               tagName: "a",
-              className: "linkcard " + props,
+              className: "or-linkcard " + props,
               placeholder: "https://example.com",
               value: content,
               allowedFormats: [],
@@ -75,7 +75,7 @@
       return [
         el(RichText.Content, {
           tagName: "a",
-          className: "linkcard " + props,
+          className: "or-linkcard " + props,
           value: content,
         }),
       ];

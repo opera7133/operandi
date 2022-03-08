@@ -1,22 +1,22 @@
 /* customize */
-#customize-control-or_list_design_view .customize-inside-control-row {
+.customize-control-image-label-radio .customize-inside-control-row {
   margin: 0;
 }
 
-#customize-control-or_list_design_view input[type='radio'] {
+.customize-control-image-label-radio input[type='radio'] {
   display: none;
 }
 
-#customize-control-or_list_design_view input[type='radio'] + label {
+.customize-control-image-label-radio input[type='radio'] + label {
   display: block;
 }
-#customize-control-or_list_design_view input[type='radio'] + label img {
+.customize-control-image-label-radio input[type='radio'] + label img {
   border: 3px solid transparent;
   -webkit-transition: border 0.3s;
   transition: border 0.3s;
 }
 
-#customize-control-or_list_design_view input[type='radio']:checked + label img {
+.customize-control-image-label-radio input[type='radio']:checked + label img {
   border-color: #2980b9;
 }
 #customize-controls .customize-control-sidebar_block_editor h3 {

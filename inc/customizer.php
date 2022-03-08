@@ -217,6 +217,22 @@ function or_customize($wp_customize)
         ])
     );
 
+    $wp_customize->add_setting("or_single_design_heading");
+    $wp_customize->add_control(
+        new OR_Customize_Image_Label_Radio_Control(
+            $wp_customize,
+            "or_single_design_heading",
+            [
+                "label" => "見出しスタイル",
+                "section" => "or_single_design",
+                "choices" => [
+                    "default" => get_template_directory_uri() . "/img/hs0.png",
+                    "heading1" => get_template_directory_uri() . "/img/hs1.png",
+                ],
+            ]
+        )
+    );
+
     $wp_customize->add_section("or_mobile_design", [
         "title" => "モバイル",
         "panel" => "or_design",
@@ -437,14 +453,14 @@ function theme_customize_css()
     <?php endif; ?>
 }
 <?php if (get_theme_mod("or_main_design_rounded")): ?>
-.content.list a:not(.page-numbers), .content.list a .col, .content.article .size-post-thumbnail, .content.article .toc {
+.content.list a:not(.page-numbers), .content.list a .opr_col, .content.article .size-post-thumbnail, .content.article .toc {
     border-radius: 1rem;
 }
 .content.article blockquote {
     border-top-right-radius: 1rem;
     border-bottom-right-radius: 1rem;
 }
-.content.list a .col img {
+.content.list a .opr_col img {
     border-top-left-radius: 1rem;
     border-top-right-radius: 1rem;
 }
@@ -546,7 +562,7 @@ footer.footer {
 }
 <?php endif; ?>
 <?php if (get_theme_mod("or_list_design_eyecatch")): ?>
-.content.list a .col img {
+.content.list a .opr_col img {
     display: none;
 }
 <?php endif; ?>
@@ -559,19 +575,41 @@ main {
 .content.list {
   display: flex;
 }
-.content.list a .col img {
+.content.list a .opr_col img {
   width: 30%;
   height: auto;
   border-top-left-radius: 1rem;
   border-bottom-left-radius: 1rem;
   border-top-right-radius: 0;
 }
-.content.list a .col {
+.content.list a .opr_col {
   flex-direction: row;
   gap: 16px;
 }
 }
-
+<?php endif; ?>
+<?php if (get_theme_mod("or_single_design_heading") == "heading1"): ?>
+.content.article h1 {
+  font-size: 1.75rem;
+  padding-top: 0.4em;
+  padding-bottom: 0.4em;
+  border-top: 3px solid #000;
+  border-bottom: 3px solid #000;
+}
+.content.article h2:not(.title) {
+  padding-top: 0.55em;
+  padding-bottom: 0.5em;
+  padding-left: 0.5em;
+  font-size: 1.4rem;
+  background-color: #f6f6f6;
+  border-left: 4px solid #222222;
+}
+.content.article h3 {
+  font-size:1.3em;
+  padding-bottom: 0.25em;
+  line-height: 1.4;
+  border-bottom: 1px solid #222222;
+}
 <?php endif; ?>
 </style>
 <?php

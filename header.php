@@ -15,6 +15,8 @@
     <title><?php the_title(); ?> | <?php bloginfo("name"); ?></title>
     <?php elseif (is_category() || is_tag()): ?>
     <title><?php single_cat_title(); ?> | <?php bloginfo("name"); ?></title>
+    <?php elseif (is_author()): ?>
+    <title><?php echo get_the_author(); ?> | <?php bloginfo("name"); ?></title>
     <?php else: ?>
     <title><?php the_title(); ?> | <?php bloginfo("name"); ?></title>
     <?php endif; ?>  

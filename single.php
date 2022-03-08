@@ -151,6 +151,59 @@
                 <?php endif;
                 ?>
             </article>
+            <?php the_post(); ?>
+            <div class="author">
+                <div class="details">
+                    <?php echo get_avatar(get_the_author_meta("ID")); ?>
+                    <p>著者：<?php echo get_the_author(); ?></p>
+                    <a class="posts" href="<?php echo get_author_posts_url(
+                        get_the_author_meta("ID")
+                    ); ?>">記事一覧</a>
+                </div>
+                <p class="description"><?php echo get_the_author_meta(
+                    "description"
+                ); ?></p>
+                <div class="author-sns">
+                <?php
+                // Website
+                if (get_the_author_meta("user_url")) {
+                    echo '<a rel="noopener noreferrer" class="sns-icon url" href="' .
+                        esc_url(get_the_author_meta("user_url")) .
+                        '"><i class="ori-url"></i></a>';
+                }
+                // Facebook
+                if (get_the_author_meta("facebook")) {
+                    echo '<a rel="noopener noreferrer" class="sns-icon facebook" href="' .
+                        esc_url(
+                            "https://www.facebook.com/" .
+                                get_the_author_meta("facebook")
+                        ) .
+                        '"><i class="ori-facebook"></i></a>';
+                }
+                // Twitter
+                if (get_the_author_meta("twitter")) {
+                    echo '<a rel="noopener noreferrer" class="sns-icon twitter" href="' .
+                        esc_url(
+                            "https://twitter.com/" .
+                                get_the_author_meta("twitter")
+                        ) .
+                        '"><i class="ori-twitter"></i></a>';
+                }
+                // Google Plus
+                if (get_the_author_meta("youtube")) {
+                    echo '<a rel="noopener noreferrer" class="sns-icon youtube" href="' .
+                        esc_url(get_the_author_meta("youtube")) .
+                        '"><i class="ori-youtube"></i></a>';
+                }
+                // Skype
+                if (get_the_author_meta("github")) {
+                    echo '<a rel="noopener noreferrer" class="sns-icon github" href="' .
+                        esc_attr(get_the_author_meta("github")) .
+                        '?call"><i class="ori-github"></i></a>';
+                }
+                ?>
+                </div>
+            </div>
             <?php if (!get_theme_mod("or_single_design_related")):
 
                 if (has_category()) {

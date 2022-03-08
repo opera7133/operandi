@@ -1,7 +1,7 @@
 <?php get_header(); ?>
     <main>
         <div class="content list">
-        <h2 class="list-title">カテゴリー：<?php single_cat_title(); ?></h2>
+        <h2 class="list-title">著者：<?php echo get_the_author(); ?></h2>
         <?php if (have_posts()):
             while (have_posts()):
                 the_post(); ?>

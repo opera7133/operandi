@@ -21,10 +21,6 @@ function custom_mime_types($mimes)
 }
 add_filter("upload_mimes", "custom_mime_types");
 
-add_action(
-    "customize_controls_enqueue_scripts",
-    "or_customize_controls_enqueue_scripts"
-);
 function or_customize_controls_enqueue_scripts()
 {
     wp_enqueue_script(
@@ -39,6 +35,10 @@ function or_customize_controls_enqueue_scripts()
         get_template_directory_uri() . "/css/customizer.css"
     );
 }
+add_action(
+    "customize_controls_enqueue_scripts",
+    "or_customize_controls_enqueue_scripts"
+);
 add_theme_support("custom-logo");
 
 require "lib/update-checker/plugin-update-checker.php";
@@ -106,3 +106,16 @@ function or_register_block()
 }
 
 add_action("init", "or_register_block");
+
+function custom_user_meta($wb)
+{
+    $wb["twitter"] = __("Facebook ユーザー名", "text_domain");
+    $wb["twitter"] = __("Twitter ユーザー名", "text_domain");
+    $wb["github"] = __("Github URL", "text_domain");
+    $wb["telegram"] = __("Telegram URL", "text_domain");
+    $wb["youtube"] = __("Youtube URL", "text_domain");
+    $wb["discord"] = __("Discord URL", "text_domain");
+    $wb["soundcloud"] = __("Soundcloud URL", "text_domain");
+    return $wb;
+}
+add_filter("user_contactmethods", "custom_user_meta");
