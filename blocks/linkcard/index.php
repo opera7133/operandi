@@ -23,7 +23,7 @@ function OR_linkcard($attributes)
     preg_match("/<title>(.*?)</title>/", $page, $res);
     $tags = get_meta_tags($url);
     $description = @$tags["description"] ? $tags["description"] : "NULL";
-    $title = $res[1];
+    $title = $res[1] ? $res[1] : $url;
     $html = "";
     $html .=
         '<a href="' .

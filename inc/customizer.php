@@ -322,7 +322,6 @@ function or_customize($wp_customize)
     ]);
 
     $wp_customize->add_setting("or_sns_services", [
-        "default" => ["twitter", "facebook", "hatena", "pocket", "line", "url"],
         "sanitize_callback" => "OR_sanitize_multiple_checkbox",
     ]);
     $wp_customize->add_control(
