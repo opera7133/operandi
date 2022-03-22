@@ -407,6 +407,7 @@ main {
   padding-right: 2rem;
 }
 .content.article .toc li a {
+  word-break: break-all;
   color: inherit;
 }
 .content.article .toc .toc__title {
