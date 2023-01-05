@@ -8,6 +8,7 @@
                 <h2 class="title"><?php the_title(); ?></h2>
                 <time class="date"><i class="ori-time"></i>
                 <?php the_time(get_option("date_format")); ?>
+                </time>
               <div class="post-categories">
                 <?php
                 $categories = get_the_category();
