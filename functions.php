@@ -42,7 +42,8 @@ add_action(
 add_theme_support("custom-logo");
 
 require "lib/update-checker/plugin-update-checker.php";
-$myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+$myUpdateChecker = PucFactory::buildUpdateChecker(
     "https://opr.wmsci.com/version.json",
     __FILE__,
     "Operandi"

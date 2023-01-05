@@ -34,16 +34,18 @@ function add_index($content)
                     );
                 }
 
-                if (strpos($element[0], "<h2") !== false) {
+                if (strpos($element[0], "<h1") !== false) {
                     $level = 1;
-                } elseif (strpos($element[0], "<h3") !== false) {
+                } elseif (strpos($element[0], "<h2") !== false) {
                     $level = 2;
-                } elseif (strpos($element[0], "<h4") !== false) {
+                } elseif (strpos($element[0], "<h3") !== false) {
                     $level = 3;
-                } elseif (strpos($element[0], "<h5") !== false) {
+                } elseif (strpos($element[0], "<h4") !== false) {
                     $level = 4;
-                } elseif (strpos($element[0], "<h6") !== false) {
+                } elseif (strpos($element[0], "<h5") !== false) {
                     $level = 5;
+                } elseif (strpos($element[0], "<h6") !== false) {
+                    $level = 6;
                 }
 
                 while ($currentlevel < $level) {

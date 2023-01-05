@@ -6,7 +6,7 @@ Author: wamo
 Author URL: https://wmsci.com
 License: GPL-3.0 License
 License URI: https://www.gnu.org/licenses/gpl-3.0.ja.html
-Version: 1.1.0
+Version: 1.2.0
 */
 
 html,
@@ -42,6 +42,9 @@ iframe {
   padding-bottom: 56.25%;
   height:0;
 }
+.hidden {
+  display: none;
+}
 
 /* header */
 header {
@@ -70,11 +73,11 @@ header nav a {
 header nav a:hover {
   opacity: inherit;
 }
-header nav ul.menu {
+header nav nav ul {
   display: none;
 }
 @media (min-width: 640px) {
-  header nav ul.menu {
+  header nav ul {
     list-style: none;
     display: flex;
     flex-direction: row;
@@ -82,10 +85,10 @@ header nav ul.menu {
     gap: 1rem;
   }
 }
-header nav ul.menu li a {
+header nav ul li a {
   transition-duration: 200ms;
 }
-header nav ul.menu li a:hover {
+header nav ul li a:hover {
   opacity: 0.7;
 }
 header nav .mobile {
@@ -470,7 +473,6 @@ a.url:not(cite a) {
   display: flex;
   flex-direction: column;
   color: inherit;
-  border: 1px solid rgb(230, 230, 230);
 }
 .content.article .related ul li a img {
   aspect-ratio: 16 / 9;
@@ -480,7 +482,8 @@ a.url:not(cite a) {
 }
 @media (min-width: 640px) {
   .content.article .related ul li a {
-    gap: 1rem;
+    border: none;
+    gap: 0.5rem;
     flex-direction: row;
   }
   .content.article .related ul li a img {
@@ -492,7 +495,8 @@ a.url:not(cite a) {
 }
 .content.article .related ul li a:hover {
   opacity: inherit;
-  background-color: rgb(243, 243, 243);
+  transform: translateY(-0.25rem);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 }
 .content.article .related ul li a div {
   padding: 0.5rem;
@@ -637,7 +641,6 @@ li.widget {
   line-height: inherit;
 }
 .widget input:focus {
-  border: none;
   outline-offset: 1px;
 }
 .widget button.wp-block-search__button,
@@ -647,6 +650,7 @@ li.widget {
   border-radius: 9999px;
   border: none;
   transition-duration: 200ms;
+  padding: 0 1rem;
 }
 .widget button.wp-block-search__button.has-icon,
 .widget.widget_search .has-icon {
@@ -654,7 +658,7 @@ li.widget {
 }
 .widget button.wp-block-search__button:hover,
 .widget.widget_search input[type='submit']:hover {
-  opacity: 0.7;
+  opacity: 0.8;
 }
 .widget.widget_block {
   margin-top: 1rem;
@@ -698,6 +702,7 @@ li.widget {
   margin-bottom: 3rem;
 }
 .pagination .page-numbers {
+  transition-duration: 200ms;
   width: 46px;
   height: 46px;
   display: inline-block;
@@ -709,6 +714,14 @@ li.widget {
 .pagination .page-numbers.current {
   background-color: var(--primary-color, #252525);
   color: white;
+}
+.pagination .page-numbers.dots {
+  cursor: pointer;
+}
+.pagination .page-numbers:hover {
+  opacity: inherit;
+  transform: translateY(-0.25rem);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 }
 
 /* comment */
@@ -733,12 +746,8 @@ li.widget {
   border-radius: 0.5rem;
   border: none;
   padding: 0.55rem 0.75rem;
-  background-color: rgb(220, 220, 220);
-  transition-duration: 100ms;
-}
-.comment-form input[type='text']:focus,
-.comment-form textarea:focus {
   background-color: rgb(245, 245, 245);
+  transition-duration: 100ms;
 }
 .comment-form textarea {
   padding-top: 0.75rem;
@@ -752,7 +761,7 @@ li.widget {
   transition-duration: 200ms;
 }
 .comment-form input[type='submit']:hover {
-  opacity: 0.7;
+  opacity: 0.8;
 }
 .commentlist {
   display: flex;
@@ -791,6 +800,7 @@ li.widget {
   padding: 1rem;
   border-radius: 0.75rem;
   background-color: rgb(245, 245, 245);
+  margin: 0.5rem 0;
 }
 .commentlist .reply {
   display: inline-block;
@@ -798,11 +808,14 @@ li.widget {
 }
 .commentlist .reply a {
   background-color: var(--primary-color, #252525);
-  padding: 0.5rem 0.75rem;
+  padding: 0.5rem 1rem;
   color: white;
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
 }
 .comment-reply-title small {
   display: block;
   margin-top: 0.5rem;
+}
+.comment-form-comment label {
+  font-weight: bold;
 }

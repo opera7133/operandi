@@ -3,7 +3,7 @@ function or_customize($wp_customize)
 {
     include "control.php";
     $wp_customize->add_panel("or_design", [
-        "title" => "デザイン",
+        "title" => "[OPR]デザイン",
         "priority" => 700,
     ]);
 
@@ -317,7 +317,7 @@ function or_customize($wp_customize)
 
     // SNS
     $wp_customize->add_section("or_sns", [
-        "title" => "SNS",
+        "title" => "[OPR]SNS",
         "priority" => 750,
     ]);
 
@@ -363,7 +363,7 @@ function or_customize($wp_customize)
 
     // 広告
     $wp_customize->add_section("or_ads", [
-        "title" => "広告",
+        "title" => "[OPR]広告",
         "priority" => 800,
     ]);
 

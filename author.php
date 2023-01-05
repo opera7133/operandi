@@ -42,13 +42,26 @@
         endif; ?>
         <?php
         $args = [
+            "show_all" => true,
             "mid_size" => 1,
-            "prev_text" => "&lt;&lt;前へ",
-            "next_text" => "次へ&gt;&gt;",
-            "screen_reader_text" => " ",
+            "prev_text" => "&lt;",
+            "next_text" => "&gt;",
         ];
-        the_posts_pagination($args);
+        $pagination_max = get_the_posts_pagination($args);
+        $pagination_max = str_replace('class="navigation pagination"', 'class="navigation pagination hidden" id="pagination_max"', $pagination_max);
+        $args["show_all"] = false;
+        $pagination_min = get_the_posts_pagination($args);
+        $pagination_min = str_replace('class="navigation pagination"', 'class="navigation pagination" id="pagination_min"', $pagination_min);
+        echo $pagination_min;
+        echo $pagination_max;
         ?>
+        <script>
+          let show_all = false;
+          document.querySelector(".page-numbers.dots").addEventListener("click", (event) => {
+            document.getElementById("pagination_min").remove()
+            document.getElementById("pagination_max").classList.remove("hidden")
+          })
+        </script>
         </div>
         <?php get_sidebar(); ?>
     </main>

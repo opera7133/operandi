@@ -7,13 +7,8 @@
             <article>
                 <h2 class="title"><?php the_title(); ?></h2>
                 <time class="date"><i class="ori-time"></i>
-                <?php if (get_theme_mod("or_main_design_datetime")):
-                    the_time(get_theme_mod("or_main_design_datetime"));
-                else:
-                    the_time("Y年n月j日");
-                endif; ?>
-                </time>
-                <div class="post-categories">
+                <?php the_time(get_option("date_format")); ?>
+              <div class="post-categories">
                 <?php
                 $categories = get_the_category();
                 foreach ($categories as $category) {
