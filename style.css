@@ -141,7 +141,8 @@ header nav #overlay.open {
   visibility: visible;
   opacity: 0.95;
 }
-header nav #overlay div.menu ul {
+header nav #overlay div.menu ul,
+header nav #overlay ul.menu{
   font-size: 1.75rem;
   padding: 0;
   color: white;
