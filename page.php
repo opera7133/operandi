@@ -19,7 +19,7 @@
                     </script>
                 <?php
                 endif; ?>
-                <section><?php the_content(); ?></section>
+                <section class="article-body"><?php the_content(); ?></section>
                 <?php if (
                     strpos(
                         get_theme_mod("or_ads_display_place"),

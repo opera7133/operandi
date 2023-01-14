@@ -118,3 +118,5 @@ function custom_user_meta($wb)
     return $wb;
 }
 add_filter("user_contactmethods", "custom_user_meta");
+
+add_filter('get_the_archive_title_prefix','__return_false');

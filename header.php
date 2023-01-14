@@ -17,6 +17,8 @@
     <title><?php single_cat_title(); ?> | <?php bloginfo("name"); ?></title>
     <?php elseif (is_author()): ?>
     <title><?php echo get_the_author(); ?> | <?php bloginfo("name"); ?></title>
+    <?php elseif (is_archive()): ?>
+    <title><?php echo get_the_archive_title(); ?> | <?php bloginfo("name"); ?></title>
     <?php else: ?>
     <title><?php the_title(); ?> | <?php bloginfo("name"); ?></title>
     <?php endif; ?>  
@@ -48,12 +50,14 @@
             }
             ?> 
         </h2>
+        <div class="row-menu">
         <?php
         $args = [
             "container" => false,
         ];
         wp_nav_menu($args);
         ?>
+        </div>
         <div id="overlay">
             <?php wp_nav_menu($args); ?>
         </div>

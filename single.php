@@ -99,7 +99,7 @@
                 <?php
                 endif;
                 ?>
-                <section><?php the_content(); ?></section>
+                <section class="article-body"><?php the_content(); ?></section>
                 <?php
                 if (
                     strpos(
