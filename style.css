@@ -451,12 +451,12 @@ main {
 .content.article .article-body .toc .toc__list_child {
   padding-left: 1rem;
 }
-.content.article .article-body .sns,
-.content.article .article-body .author-sns {
+.content.article .sns,
+.content.article .author-sns {
   display: flex;
   gap: 0.5rem;
 }
-.content.article .article-body .sns a,
+.content.article .sns a,
 .sns-icon {
   color: white;
   width: 2.5rem;
