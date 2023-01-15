@@ -3,6 +3,7 @@
     <script src="<?php echo get_template_directory_uri(); ?>/js/clipboard.min.js"></script>
     <script src="<?php echo get_template_directory_uri(); ?>/js/sweetalert2.min.js"></script>
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/sweetalert2.min.css">
+    <script type="text/javascript" src='<?php bloginfo('url'); ?>/wp-includes/js/comment-reply.js'></script>
     <script>
         <?php if (get_theme_mod("or_ads_id")): ?>
         (function(window, document) {
