@@ -849,7 +849,7 @@ li.widget {
 .commentlist .comment-author .says {
   margin-left: 0.25rem;
 }
-.commentlist p {
+.commentlist .comment-body p {
   display: block;
   padding: 1rem;
   border-radius: 0.75rem;
@@ -866,9 +866,10 @@ li.widget {
   color: white;
   border-radius: 0.5rem;
 }
-.comment-reply-title small {
-  display: block;
-  margin-top: 0.5rem;
+.comment-reply-title {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
 }
 .comment-form label {
   font-weight: bold;
