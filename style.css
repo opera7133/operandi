@@ -831,10 +831,10 @@ li.widget {
 .commentlist .children {
   margin-top: 1rem;
 }
-.commentlist cite {
+.commentlist .comment-body cite {
   font-style: normal;
 }
-.commentlist a {
+.commentlist .comment-body a {
   color: black;
 }
 .commentlist .comment-author {
