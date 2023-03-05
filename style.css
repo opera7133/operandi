@@ -82,8 +82,7 @@ header nav {
   margin-right: auto;
   max-width: 80rem;
   width: 100%;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding: 0.5rem 1rem;
 }
 header nav .custom-logo {
   height: 2rem;
