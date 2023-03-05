@@ -88,6 +88,7 @@ header nav {
 header nav .custom-logo {
   height: 2rem;
   width: auto;
+  display: block;
 }
 header nav a {
   color: inherit;
