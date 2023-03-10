@@ -28,11 +28,13 @@ a {
   text-decoration: none;
   color: rgb(0, 100, 255);
   transition-duration: 200ms;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
 }
 a:hover {
   opacity: 0.7;
+}
+a, code {
+  word-wrap: break-word;
+  overflow-wrap: break-word; 
 }
 iframe {
   width: auto;
