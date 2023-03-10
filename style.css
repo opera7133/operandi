@@ -849,7 +849,7 @@ li.widget {
 .commentlist .comment-author .says {
   margin-left: 0.25rem;
 }
-.commentlist .comment-body p {
+.commentlist .comment-body .comment-content {
   display: block;
   padding: 1rem;
   border-radius: 0.75rem;
