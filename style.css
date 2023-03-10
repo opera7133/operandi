@@ -28,6 +28,8 @@ a {
   text-decoration: none;
   color: rgb(0, 100, 255);
   transition-duration: 200ms;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 a:hover {
   opacity: 0.7;
@@ -855,6 +857,8 @@ li.widget {
   border-radius: 0.75rem;
   background-color: rgb(245, 245, 245);
   margin: 0.5rem 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 .commentlist .comment-body .comment-content a {
   text-decoration: none;
