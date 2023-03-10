@@ -8,7 +8,10 @@
   if (have_comments()): ?>
 	<h3>コメント（<?php echo $commentcount; ?>件）</h3>
 	<ol class="commentlist">
-		<?php wp_list_comments("avatar_size=40"); ?>
+		<?php wp_list_comments(array(
+			'avatar_size' => 40,
+			'callback' => 'comment_custom_callback',
+		)); ?>
 	</ol>
 	<?php endif;
   ?>
