@@ -851,7 +851,7 @@ li.widget {
 }
 .commentlist .comment-body .comment-content {
   display: block;
-  padding: 1rem;
+  padding: 0.5rem 1rem;
   border-radius: 0.75rem;
   background-color: rgb(245, 245, 245);
   margin: 0.5rem 0;
