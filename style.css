@@ -6,7 +6,7 @@ Author: wamo
 Author URL: https://wmsci.com
 License: GPL-3.0 License
 License URI: https://www.gnu.org/licenses/gpl-3.0.ja.html
-Version: 1.2.1
+Version: 1.2.2
 */
 
 html,
@@ -855,6 +855,11 @@ li.widget {
   border-radius: 0.75rem;
   background-color: rgb(245, 245, 245);
   margin: 0.5rem 0;
+}
+.commentlist .comment-body .comment-content a {
+  text-decoration: none;
+  color: rgb(0, 100, 255);
+  transition-duration: 200ms;
 }
 .commentlist .reply {
   display: inline-block;
